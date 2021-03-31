@@ -1,0 +1,30 @@
+<?php 
+
+/**
+* Esta clase sera la encargada de gestionar la conexion a la base de datos
+*/
+class ConexionDB extends PDO
+{
+	private $host = '127.0.0.1';
+    private $user = 'uatreloj_usu-relojes';
+	private $pass = 'Monica74@OK-*';
+	private $db   = 'uatreloj_relojes';
+
+	function __construct()
+	{
+		try {
+			date_default_timezone_set('America/Bogota');
+			parent::__construct("mysql:host={$this->host};dbname={$this->db}", $this->user, $this->pass );
+		} catch (PDOException $e) {
+			echo "EROOR!: ". $e->getMessage();
+			exit();
+		}
+	}
+}
+
+$conex = new ConexionDB();
+
+echo 'Funcinando';
+
+
+?>
